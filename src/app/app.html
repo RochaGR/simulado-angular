@@ -1,7 +1,51 @@
-<div class="container">
-  <img src="catjam.avif" alt="">
-  <img src="hackermans.avif" alt="">
-  <img src="4x.avif" alt="">
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="mb-3 d-flex gap-3">
+        <input class="form-control" [(ngModel)]="filtroNome" placeholder="Buscar jogador">
+        <select class="form-select" [(ngModel)]="filtroPosicao">
+          <option value="">Todas</option>
+          <option *ngFor="let pos of listaPosicao" [value]="pos">{{ pos }}</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-4" *ngFor="let jogador of jogadoresFiltrados">
+          <app-card-jogador [jogador]="jogador" (click)="escalarJogador(jogador)"></app-card-jogador>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+  <h5>Jogadores escalados</h5>
+
+  <div *ngIf="jogadoresEscalados.length === 0" class="text-muted">
+    Nenhum jogador escalado
+  </div>
+
+  <table *ngIf="jogadoresEscalados.length > 0" class="table table-bordered table-sm">
+    <thead class="table-light">
+      <tr>
+        <th>Nome</th>
+        <th>Posição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let jogador of jogadoresEscalados">
+        <td>{{ jogador.nome }}</td>
+        <td>{{ jogador.posicao }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="removerJogador(jogador)">
+            Remover
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  </div>
 </div>
 
-<router-outlet />
+

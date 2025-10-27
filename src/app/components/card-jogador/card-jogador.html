@@ -1,0 +1,14 @@
+<div class="card" style="width: 18rem;">
+  <img [src]=" '' + jogador.imagem" class="card-img-top img-fluid" [alt]="jogador.nome" />
+  <div class="card-body">
+    <h5 class="card-title">{{ jogador.nome }}</h5>
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Idade: {{ jogador.idade }}</li>
+    <li class="list-group-item">Camisa: {{ jogador.camisa }}</li>
+    <li class="list-group-item">Posição: {{ jogador.posicao }}</li>
+  </ul>
+  <div class="card-body text-center">
+    <button class="btn btn-success">Escalar</button>
+  </div>
+</div>
